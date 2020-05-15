@@ -1,13 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './app.vue';
-// import cxUi from '../../packages/cxui';
-// import * as cxUi from './components';
-import * as cxUi from 'sycxui'
+import CxUi from 'sycxui'
 
-console.log(cxUi);
 Vue.use(VueRouter);
-Vue.use(cxUi);
+Vue.use(CxUi);
 
 const router = new VueRouter({
     mode: 'history',

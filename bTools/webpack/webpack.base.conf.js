@@ -1,15 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const pkg = require('../../package.json');
 
-
-const rootPath = path.resolve(__dirname, '../..')  
-const distPath = path.resolve(__dirname, '../../dist')  
-
 module.exports = {
+    mode: 'development',
+    devtool: 'eval-source-map',
     module: {
         rules: [
             {
@@ -134,32 +130,12 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.vue'],
-        alias: {
-            'vue': 'vue/dist/vue.esm.js',
-            '@root': rootPath,
-            '@dist': distPath
-        }
     },
     plugins: [
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.DefinePlugin({
             'process.env.VERSION': `'${pkg.version}'`
         }),
-        new CleanWebpackPlugin(),
-        new VueLoaderPlugin(),
-        // new CopyWebpackPlugin([
-        // {
-        //     from: rootPath + '/packages',
-        //     to: distPath + '/packages',
-        // },
-        // {
-        //     from: rootPath + '/scripts',
-        //     to: distPath + '/scripts',
-        // },
-        // {
-        //     from: rootPath + '/package.json',
-        //     to: distPath + '/package.json',
-        // }
-        // ])
+        new VueLoaderPlugin()
     ]
 };

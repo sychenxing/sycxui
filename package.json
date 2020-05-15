@@ -1,24 +1,27 @@
 {
+    "private": true,
     "name": "sycxui",
-    "version": "1.0.1",
-    "description": "cxui",
+    "version": "1.0.2",
+    "description": "sycxui vue ui",
     "main": "dist/lib/cxui.js",
     "license": "MIT",
     "files": [
         "dist",
         "packages",
+        "types",
         "package.json"
     ],
+    "typings": "types/index.d.ts",
     "workspaces": [
-        "cxui",
-        "button",
-        "card",
-        "input"
+        "packages/*"
     ],
     "scripts": {
         "dev": "cross-env NODE_ENV=development DEV_TYPE=dev node bTools/build/dev.js",
         "build": "cross-env NODE_ENV=development node bTools/build/build.js",
         "build:dev": "cross-env NODE_ENV=development DEV_TYPE=build node bTools/build/dev.js"
+    },
+    "engines": {
+        "node": ">=10.0.0"
     },
     "peerDependencies": {},
     "devDependencies": {
@@ -35,7 +38,7 @@
         "html-loader": "^1.1.0",
         "html-webpack-plugin": "^4.3.0",
         "path": "^0.12.7",
-        "sycxui": "^1.0.0",
+        "sycxui": "^1.0.2",
         "vue": "2.5.16",
         "vue-loader": "^15.9.2",
         "vue-router": "^3.1.6",

@@ -17,16 +17,18 @@ let allPackages = () => {
       })
 
       return targets;
-  }
-
-function pathUtil() {
-  const rootPath = path.resolve(__dirname, '../..')  
-  const distPath = path.resolve(__dirname, '../../dist')  
-  return {
-    root: rootPath,
-    dist: distPath
-  };
 }
+
+function getPath() {
+    const rootPath = path.resolve(__dirname, '../..')  
+    const distPath = path.resolve(__dirname, '../../dist')  
+    return {
+      root: rootPath,
+      dist: distPath
+    };
+}
+
+const pathUtil = getPath();
 
 module.exports = {
   allPackages, pathUtil
