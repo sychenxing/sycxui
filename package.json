@@ -1,0 +1,53 @@
+{
+    "name": "sycxui",
+    "version": "1.0.1",
+    "description": "cxui",
+    "main": "dist/lib/cxui.js",
+    "license": "MIT",
+    "files": [
+        "dist",
+        "packages",
+        "package.json"
+    ],
+    "workspaces": [
+        "cxui",
+        "button",
+        "card",
+        "input"
+    ],
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development DEV_TYPE=dev node bTools/build/dev.js",
+        "build": "cross-env NODE_ENV=development node bTools/build/build.js",
+        "build:dev": "cross-env NODE_ENV=development DEV_TYPE=build node bTools/build/dev.js"
+    },
+    "peerDependencies": {},
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.2",
+        "babel-preset-env": "^1.6.1",
+        "clean-webpack-plugin": "^3.0.0",
+        "copy-webpack-plugin": "^5.1.1",
+        "cross-env": "^7.0.0",
+        "css-loader": "^3.5.3",
+        "execa": "^4.0.1",
+        "file-loader": "^6.0.0",
+        "friendly-errors-webpack-plugin": "^1.7.0",
+        "html-loader": "^1.1.0",
+        "html-webpack-plugin": "^4.3.0",
+        "path": "^0.12.7",
+        "sycxui": "^1.0.0",
+        "vue": "2.5.16",
+        "vue-loader": "^15.9.2",
+        "vue-router": "^3.1.6",
+        "vue-style-loader": "^4.1.2",
+        "vue-template-compiler": "2.5.16",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.11",
+        "webpack-dev-server": "^3.11.0",
+        "webpack-merge": "^4.2.2"
+    },
+    "dependencies": {
+        "chalk": "^4.0.0",
+        "cli-spinner": "^0.2.10"
+    }
+}
