@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const pkg = require('../../package.json');
+var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -54,70 +55,12 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loaders: [
-                    {
-                        loader: 'style-loader',
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                    {
-                        loader: '\'autoprefixer-loader\'',
-                    },
-                ]
+                use: ExtractTextWebpackPlugin.extract({
+                    use: ['css-loader'],
+                    filename : '[name].css',
+                  })
             },
-            {
-                test: /\.less$/,
-                loaders: [
-                    {
-                        loader: 'style-loader',
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                    {
-                        loader: 'less-loader',
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                ]
-            },
-            {
-                test: /\.scss$/,
-                loaders: [
-                    {
-                        loader: 'style-loader',
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
-                ]
-            },
+            
             {
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                 loader: 'url-loader?limit=8192'
@@ -132,6 +75,8 @@ module.exports = {
         extensions: ['.js', '.vue'],
     },
     plugins: [
+        new ExtractTextWebpackPlugin('[name].css'),
+
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.DefinePlugin({
             'process.env.VERSION': `'${pkg.version}'`

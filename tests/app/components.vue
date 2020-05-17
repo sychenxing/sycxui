@@ -1,7 +1,6 @@
 <template>
     <div style="height: 100%; position: relative">
         <cx-input />
-        <cx-card />
         <cx-button />
     </div>
 </template>

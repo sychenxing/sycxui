@@ -21,6 +21,7 @@ module.exports = merge(webpackBaseConfig, {
         port: 3002,
         inline: true,
         historyApiFallback: {
+            index: pathUtil.root + '/tests/app/dist/index.html',
             rewrites: [{
                 from: /.*/g,
                 to: pathUtil.root + '/tests/app/dist/index.html'

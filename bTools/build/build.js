@@ -3,16 +3,23 @@ const path = require('path')
 const chalk = require('chalk')
 const Spinner = require('cli-spinner').Spinner
 
-build();
 
-async function build() {  
- 
-  
-  print('Building CX UI Components start...');
 
+buildAllTargets()
+
+
+function buildAllTargets() {
+   let buildType = process.env.BUILD_TYPE;
+
+   build('', buildType)
+}
+
+async function build(target, buildType) {  
   await execa(
     'webpack',
     [
+      `--env.TARGET=${target}`,
+      `--env.BUILD_TYPE=${buildType}`,
       '--config',
       [
         path.resolve(__dirname, `../webpack/webpack.build.conf.js`)
@@ -20,15 +27,4 @@ async function build() {
     ],
     { stdio: 'inherit' }
   )
-
-  print('Building CX UI Components end...');
-}
-
-function print(msg) {
-  process.stdout.write('\n')
-  let spinner = new Spinner(chalk.green(`%s ${msg}`))
-  spinner.setSpinnerString('⣾⣽⣻⢿⡿⣟⣯⣷')
-  spinner.start()
-  spinner.stop();
-  process.stdout.write('\n')
 }

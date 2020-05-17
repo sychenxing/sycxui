@@ -1,0 +1,5 @@
+@import "../../../main/theme/common/var.css";
+
+.cx-card {
+    display: inline;
+}

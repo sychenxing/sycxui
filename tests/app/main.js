@@ -1,10 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './app.vue';
-import CxUi from 'sycxui'
+import {Button, Input, Card} from 'sycxui'
+// import aui from 'sycxui'
+
 
 Vue.use(VueRouter);
-Vue.use(CxUi);
+Vue.use(Button);
+Vue.use(Input);
+// Vue.use(Card);
+// Vue.use(aui);
 
 const router = new VueRouter({
     mode: 'history',
